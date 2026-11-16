@@ -1,0 +1,1400 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <title>Vanda Gardrób – Személyes Stílustanácsadó</title>
+
+  <!-- Beágyazott PWA Manifest (egyetlen fájlban) -->
+  <link rel="manifest" id="inline-manifest" />
+  <meta name="theme-color" content="#D47A92" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="apple-mobile-web-app-title" content="Vanda Gardrób" />
+  <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%23D47A92'/%3E%3Cstop offset='100%25' stop-color='%23B8526E'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='512' height='512' rx='112' fill='url(%23g)'/%3E%3Crect x='24' y='24' width='464' height='464' rx='92' fill='none' stroke='%23F3D9C4' stroke-width='8' opacity='0.6'/%3E%3Cpath d='M256 140c-22 0-40 18-40 40 0 14 7 26 18 33l22 14-126 84c-14 9-8 31 9 31h234c17 0 23-22 9-31l-126-84v-20c18-6 30-22 30-42 0-22-18-40-40-40z' fill='none' stroke='%23FFF8F5' stroke-width='22' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E" />
+
+  <script>
+    (function() {
+      const iconSvg = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%23D47A92'/%3E%3Cstop offset='100%25' stop-color='%23B8526E'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='512' height='512' rx='112' fill='url(%23g)'/%3E%3Crect x='24' y='24' width='464' height='464' rx='92' fill='none' stroke='%23F3D9C4' stroke-width='8' opacity='0.6'/%3E%3Cpath d='M256 140c-22 0-40 18-40 40 0 14 7 26 18 33l22 14-126 84c-14 9-8 31 9 31h234c17 0 23-22 9-31l-126-84v-20c18-6 30-22 30-42 0-22-18-40-40-40z' fill='none' stroke='%23FFF8F5' stroke-width='22' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E";
+      const manifest = {
+        name: "Vanda Gardrób – Személyes Stílustanácsadó",
+        short_name: "Vanda Gardrób",
+        start_url: window.location.href,
+        display: "standalone",
+        orientation: "portrait",
+        background_color: "#FDF8F5",
+        theme_color: "#D47A92",
+        icons: [{ src: iconSvg, sizes: "192x192 512x512", type: "image/svg+xml", purpose: "any maskable" }]
+      };
+      const blob = new Blob([JSON.stringify(manifest)], { type: 'application/manifest+json' });
+      document.getElementById('inline-manifest').setAttribute('href', URL.createObjectURL(blob));
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            serif: ['"Playfair Display"', 'Georgia', 'serif'],
+            sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+          },
+          colors: {
+            cream: '#FDF8F5',
+            blush: '#F6E6EA',
+            rosewood: '#D47A92',
+            berry: '#B8526E',
+            rosegold: '#C9966B',
+            plum: '#2D1B22',
+            mauve: '#7D636C',
+          },
+          boxShadow: {
+            'luxe': '0 14px 35px -10px rgba(184, 82, 110, 0.14)',
+            'soft': '0 6px 20px -4px rgba(45, 27, 34, 0.06)',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      background-color: #FDF8F5;
+      color: #2D1B22;
+      -webkit-tap-highlight-color: transparent;
+      padding-top: env(safe-area-inset-top);
+      padding-bottom: env(safe-area-inset-bottom);
+      background-image:
+        radial-gradient(at 0% 0%, rgba(246, 230, 234, 0.75) 0px, transparent 50%),
+        radial-gradient(at 100% 15%, rgba(201, 150, 107, 0.12) 0px, transparent 45%);
+    }
+    .glass-header {
+      background: rgba(253, 248, 245, 0.88);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    .card-hover {
+      transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.25s ease;
+    }
+    .card-hover:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 18px 36px -12px rgba(184, 82, 110, 0.2);
+    }
+    input[type="range"] { accent-color: #B8526E; }
+  </style>
+</head>
+<body class="font-sans antialiased min-h-screen pb-24 selection:bg-rosewood/20 selection:text-plum">
+
+  <!-- Rejtett inputok -->
+  <input type="file" id="quick-photo-input" accept="image/*" class="hidden" />
+  <input type="file" id="bulk-photo-input" accept="image/*" multiple class="hidden" />
+  <input type="file" id="backup-restore-input" accept=".json" class="hidden" />
+
+  <!-- Felső navigáció -->
+  <header class="sticky top-0 z-30 glass-header border-b border-rosegold/20">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 sm:h-20 flex items-center justify-between gap-2">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 sm:w-11 sm:h-11 rounded-2xl bg-gradient-to-br from-rosewood to-berry flex items-center justify-center text-white shadow-luxe ring-1 ring-rosegold/40 shrink-0">
+          <svg class="w-5 h-5 sm:w-6 sm:h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 6a2 2 0 10-2-2c0 1.5 2 2 2 3.5V9m0 0L4.5 14.5C3.4 15.3 4 17 5.4 17h13.2c1.4 0 2-1.7.9-2.5L12 9z"/>
+          </svg>
+        </div>
+        <div>
+          <div class="flex items-center gap-1.5">
+            <h1 class="font-serif text-xl sm:text-2xl font-bold tracking-tight text-plum">Vanda Gardrób</h1>
+            <span class="text-rosegold text-sm">✦</span>
+          </div>
+          <p class="text-[11px] uppercase tracking-[0.16em] text-mauve font-medium hidden sm:block">Személyes Stílustanácsadó</p>
+        </div>
+      </div>
+
+      <!-- Fő nézetváltó -->
+      <nav class="hidden md:flex items-center bg-blush/70 p-1.5 rounded-full border border-rosegold/20">
+        <button onclick="switchTab('stylist')" id="tab-stylist" class="tab-btn px-5 py-2 rounded-full text-sm font-semibold transition-all bg-white text-berry shadow-soft">
+          ✨ Szett Ajánló
+        </button>
+        <button onclick="switchTab('wardrobe')" id="tab-wardrobe" class="tab-btn px-5 py-2 rounded-full text-sm font-medium text-mauve hover:text-plum transition-all">
+          👗 Gardróbom (<span id="wardrobe-count">0</span>)
+        </button>
+        <button onclick="switchTab('saved')" id="tab-saved" class="tab-btn px-5 py-2 rounded-full text-sm font-medium text-mauve hover:text-plum transition-all">
+          💖 Lookbook (<span id="saved-count">0</span>)
+        </button>
+      </nav>
+
+      <!-- Jobb oldali műveletek -->
+      <div class="flex items-center gap-1.5 sm:gap-2">
+        <button onclick="openBackupModal()" title="Telepítés telefonra & Biztonsági mentés" class="p-2.5 rounded-full bg-white hover:bg-blush/60 text-plum border border-rosegold/30 transition-all shadow-soft">
+          <svg class="w-4 h-4 text-berry" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
+        </button>
+        <button onclick="triggerBulkUpload()" title="Több ruhafotó feltöltése egyszerre" class="hidden sm:inline-flex items-center gap-1.5 bg-white hover:bg-blush/60 text-plum text-xs sm:text-sm font-semibold px-3.5 py-2.5 rounded-full border border-rosegold/35 transition-all shadow-soft">
+          <svg class="w-4 h-4 text-berry" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+          <span>Több fotó</span>
+        </button>
+        <button onclick="openAddModal()" class="inline-flex items-center gap-2 bg-gradient-to-r from-rosewood to-berry hover:opacity-95 active:scale-95 text-white text-xs sm:text-sm font-semibold px-4 sm:px-5 py-2.5 rounded-full shadow-luxe transition-all">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><circle cx="12" cy="13" r="3"/></svg>
+          <span>Új ruha</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Telepítési tipp sáv (ha még böngészőben fut) -->
+  <div id="pwa-install-banner" class="hidden max-w-6xl mx-auto px-4 sm:px-6 pt-4">
+    <div class="bg-gradient-to-r from-blush via-white to-blush border border-rosegold/35 rounded-2xl p-3.5 sm:px-5 flex flex-wrap items-center justify-between gap-3 shadow-soft">
+      <div class="flex items-center gap-3">
+        <span class="text-xl">📲</span>
+        <div class="text-xs sm:text-sm">
+          <span class="font-semibold text-plum">Tedd ki a telefon főképernyőjére alkalmazásként!</span>
+          <span class="text-mauve block sm:inline sm:ml-1">Saját ikonnal, teljes képernyőn indul.</span>
+        </div>
+      </div>
+      <div class="flex items-center gap-2">
+        <button onclick="openBackupModal()" class="bg-berry text-white text-xs font-semibold px-4 py-2 rounded-full shadow-soft hover:opacity-95 transition">
+          Hogyan?
+        </button>
+        <button onclick="dismissInstallBanner()" class="text-xs text-mauve hover:text-plum px-2 py-1">Elrejtés</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Fő tartalom -->
+  <main class="max-w-6xl mx-auto px-4 sm:px-6 pt-6 sm:pt-8">
+
+    <!-- 1. NÉZET: SZETT AJÁNLÓ -->
+    <section id="view-stylist" class="space-y-7">
+      <div class="bg-white/95 rounded-[28px] p-5 sm:p-7 shadow-luxe border border-rosegold/25">
+        <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-5">
+          <div>
+            <div class="flex flex-wrap items-center gap-2 mb-1.5">
+              <span class="inline-flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-[0.14em] text-berry bg-blush px-3 py-1 rounded-full">
+                ✦ Napi Stílus & Időjárás
+              </span>
+              <button onclick="detectLiveWeather()" id="live-weather-btn" class="inline-flex items-center gap-1.5 text-xs font-semibold text-plum bg-cream hover:bg-blush/70 px-3 py-1 rounded-full border border-rosegold/30 transition">
+                <span>📍</span>
+                <span id="live-weather-label">Élő időjárás lekérése</span>
+              </button>
+            </div>
+            <h2 class="font-serif text-2xl sm:text-3xl font-bold text-plum">Mit vegyen fel ma Vanda?</h2>
+            <p class="text-sm text-mauve mt-1" id="weather-advice">Válassz évszakot vagy hőmérsékletet, és összeállítom a tökéletes szettet.</p>
+          </div>
+
+          <div class="flex items-center gap-2 overflow-x-auto no-scrollbar pb-1" id="weather-pills">
+            <button data-weather="autumn" onclick="setWeather('autumn')" class="weather-pill shrink-0 flex items-center gap-2 px-4 py-2.5 rounded-2xl text-sm font-semibold border transition-all bg-gradient-to-r from-rosewood to-berry text-white border-transparent shadow-luxe">
+              <span>🍂</span> Ősz (13°C)
+            </button>
+            <button data-weather="summer" onclick="setWeather('summer')" class="weather-pill shrink-0 flex items-center gap-2 px-4 py-2.5 rounded-2xl text-sm font-medium border border-rosegold/25 bg-cream/70 text-plum hover:bg-blush/60 transition-all">
+              <span>☀️</span> Nyár (27°C)
+            </button>
+            <button data-weather="spring" onclick="setWeather('spring')" class="weather-pill shrink-0 flex items-center gap-2 px-4 py-2.5 rounded-2xl text-sm font-medium border border-rosegold/25 bg-cream/70 text-plum hover:bg-blush/60 transition-all">
+              <span>🌸</span> Tavasz (18°C)
+            </button>
+            <button data-weather="winter" onclick="setWeather('winter')" class="weather-pill shrink-0 flex items-center gap-2 px-4 py-2.5 rounded-2xl text-sm font-medium border border-rosegold/25 bg-cream/70 text-plum hover:bg-blush/60 transition-all">
+              <span>❄️</span> Tél (2°C)
+            </button>
+            <button data-weather="rainy" onclick="setWeather('rainy')" class="weather-pill shrink-0 flex items-center gap-2 px-4 py-2.5 rounded-2xl text-sm font-medium border border-rosegold/25 bg-cream/70 text-plum hover:bg-blush/60 transition-all">
+              <span>🌧️</span> Esős (11°C)
+            </button>
+          </div>
+        </div>
+
+        <div class="mt-5 pt-5 border-t border-rosegold/15 grid grid-cols-1 md:grid-cols-12 gap-4 items-center">
+          <div class="md:col-span-5 flex items-center gap-3 bg-cream/90 px-4 py-2.5 rounded-2xl border border-rosegold/20">
+            <span class="text-xs font-semibold text-mauve whitespace-nowrap">Hőmérséklet:</span>
+            <input type="range" id="temp-slider" min="-5" max="35" value="13" oninput="onTempSlide(this.value)" class="w-full cursor-pointer" />
+            <span id="temp-display" class="text-sm font-bold text-berry w-12 text-right">13°C</span>
+          </div>
+
+          <div class="md:col-span-4 flex items-center gap-1.5 overflow-x-auto no-scrollbar">
+            <button onclick="setOccasion('all')" data-occ="all" class="occ-btn px-3.5 py-2 rounded-full text-xs font-semibold bg-plum text-white transition">Bármi</button>
+            <button onclick="setOccasion('casual')" data-occ="casual" class="occ-btn px-3.5 py-2 rounded-full text-xs font-medium bg-blush/70 text-plum hover:bg-blush transition">Hétköznapi</button>
+            <button onclick="setOccasion('elegant')" data-occ="elegant" class="occ-btn px-3.5 py-2 rounded-full text-xs font-medium bg-blush/70 text-plum hover:bg-blush transition">Elegáns</button>
+            <button onclick="setOccasion('sporty')" data-occ="sporty" class="occ-btn px-3.5 py-2 rounded-full text-xs font-medium bg-blush/70 text-plum hover:bg-blush transition">Kényelmes</button>
+          </div>
+
+          <div class="md:col-span-3 flex md:justify-end">
+            <label class="inline-flex items-center gap-2 cursor-pointer select-none bg-blush/50 px-3.5 py-2 rounded-full border border-rosegold/25">
+              <input type="checkbox" id="only-custom-toggle" onchange="toggleOnlyCustom(this.checked)" class="rounded text-berry focus:ring-rosewood" />
+              <span class="text-xs font-semibold text-plum">Csak saját ruhák</span>
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <!-- Ajánlott Szett Kártyák -->
+      <div class="space-y-4">
+        <div class="flex flex-wrap items-center justify-between gap-3">
+          <div class="flex items-center gap-2.5">
+            <h3 class="font-serif text-xl sm:text-2xl font-bold text-plum">Ajánlott összeállítás</h3>
+            <span id="outfit-tag" class="text-xs font-semibold bg-blush text-berry px-3 py-1 rounded-full border border-rosegold/25">Réteges sikk</span>
+          </div>
+
+          <div class="flex items-center gap-2">
+            <button onclick="openManualBuilder()" class="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-full text-xs sm:text-sm font-semibold bg-white border border-rosegold/35 text-plum hover:bg-blush/50 transition shadow-soft">
+              <span>🎨</span>
+              <span>Saját szett</span>
+            </button>
+            <button onclick="saveCurrentOutfit()" id="save-outfit-btn" class="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-full text-xs sm:text-sm font-semibold bg-white border border-rosegold/35 text-berry hover:bg-blush/50 transition shadow-soft">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+              <span>Mentés</span>
+            </button>
+            <button onclick="generateOutfit()" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold bg-plum text-white hover:bg-berry active:scale-95 transition shadow-luxe">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+              <span>Új ötlet</span>
+            </button>
+          </div>
+        </div>
+
+        <div id="outfit-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5"></div>
+
+        <div class="bg-gradient-to-r from-blush/90 via-cream to-blush/80 border border-rosegold/30 rounded-2xl p-4 sm:p-5 flex items-start gap-3.5 shadow-soft">
+          <div class="w-9 h-9 rounded-full bg-white flex items-center justify-center text-berry shrink-0 shadow-soft border border-rosegold/20">✨</div>
+          <div class="text-xs sm:text-sm text-plum leading-relaxed">
+            <span class="font-semibold text-berry">Vanda Stílustanácsa:</span>
+            <span id="stylist-note">Ha egy darab különösen tetszik, lakatold le a jobb felső sarokban, és cseréld le a többi elemet!</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. NÉZET: GARDRÓBOM -->
+    <section id="view-wardrobe" class="hidden space-y-6">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div>
+          <h2 class="font-serif text-2xl sm:text-3xl font-bold text-plum">Vanda Ruhái</h2>
+          <p class="text-sm text-mauve">Kattints bármelyik darabra a saját fotó cseréjéhez vagy szerkesztéséhez.</p>
+        </div>
+
+        <div class="flex flex-wrap items-center gap-2">
+          <button onclick="triggerBulkUpload()" class="inline-flex items-center gap-1.5 text-xs font-semibold text-plum bg-white hover:bg-blush/60 px-3.5 py-2 rounded-full border border-rosegold/30 transition shadow-soft">
+            <span>📸</span> Több saját fotó feltöltése
+          </button>
+          <button onclick="clearDemoItems()" id="clear-demos-btn" class="inline-flex items-center gap-1.5 text-xs font-semibold text-berry bg-blush/80 hover:bg-blush px-3.5 py-2 rounded-full border border-rosegold/25 transition">
+            <span>🧹</span> Mintaruhák törlése
+          </button>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-2 overflow-x-auto no-scrollbar pb-1" id="category-filters">
+        <button onclick="filterWardrobe('all')" data-cat="all" class="cat-btn px-4 py-2 rounded-full text-xs font-semibold bg-plum text-white transition">Összes</button>
+        <button onclick="filterWardrobe('top')" data-cat="top" class="cat-btn px-4 py-2 rounded-full text-xs font-medium bg-white border border-rosegold/25 text-plum hover:bg-blush/50 transition">Felsők</button>
+        <button onclick="filterWardrobe('bottom')" data-cat="bottom" class="cat-btn px-4 py-2 rounded-full text-xs font-medium bg-white border border-rosegold/25 text-plum hover:bg-blush/50 transition">Nadrágok & Szoknyák</button>
+        <button onclick="filterWardrobe('dress')" data-cat="dress" class="cat-btn px-4 py-2 rounded-full text-xs font-medium bg-white border border-rosegold/25 text-plum hover:bg-blush/50 transition">Egyberuhák</button>
+        <button onclick="filterWardrobe('outerwear')" data-cat="outerwear" class="cat-btn px-4 py-2 rounded-full text-xs font-medium bg-white border border-rosegold/25 text-plum hover:bg-blush/50 transition">Kabátok & Blézerek</button>
+        <button onclick="filterWardrobe('shoes')" data-cat="shoes" class="cat-btn px-4 py-2 rounded-full text-xs font-medium bg-white border border-rosegold/25 text-plum hover:bg-blush/50 transition">Cipők</button>
+        <button onclick="filterWardrobe('accessory')" data-cat="accessory" class="cat-btn px-4 py-2 rounded-full text-xs font-medium bg-white border border-rosegold/25 text-plum hover:bg-blush/50 transition">Táskák & Kiegészítők</button>
+      </div>
+
+      <div id="wardrobe-grid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-5"></div>
+    </section>
+
+    <!-- 3. NÉZET: LOOKBOOK -->
+    <section id="view-saved" class="hidden space-y-6">
+      <div>
+        <h2 class="font-serif text-2xl sm:text-3xl font-bold text-plum">Vanda Lookbookja</h2>
+        <p class="text-sm text-mauve">Elmentett kedvenc szettek gyors inspirációhoz.</p>
+      </div>
+
+      <div id="saved-grid" class="grid grid-cols-1 md:grid-cols-2 gap-6"></div>
+    </section>
+
+  </main>
+
+  <!-- Alsó mobil navigáció -->
+  <nav class="md:hidden fixed bottom-0 inset-x-0 z-30 glass-header border-t border-rosegold/25 flex justify-around items-center h-16 px-2">
+    <button onclick="switchTab('stylist')" id="m-tab-stylist" class="flex flex-col items-center justify-center gap-1 text-berry font-semibold text-xs py-1 px-3">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/></svg>
+      <span>Ajánló</span>
+    </button>
+    <button onclick="switchTab('wardrobe')" id="m-tab-wardrobe" class="flex flex-col items-center justify-center gap-1 text-mauve font-medium text-xs py-1 px-3">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"/></svg>
+      <span>Gardrób</span>
+    </button>
+    <button onclick="switchTab('saved')" id="m-tab-saved" class="flex flex-col items-center justify-center gap-1 text-mauve font-medium text-xs py-1 px-3">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+      <span>Lookbook</span>
+    </button>
+  </nav>
+
+  <!-- MODAL 1: ÚJ RUHA FOTÓZÁSA / SZERKESZTÉSE -->
+  <div id="add-modal" class="fixed inset-0 z-50 hidden bg-plum/50 backdrop-blur-sm flex items-end sm:items-center justify-center p-0 sm:p-4">
+    <div class="bg-cream w-full sm:max-w-lg rounded-t-[32px] sm:rounded-[32px] shadow-2xl border border-rosegold/30 max-h-[92vh] overflow-y-auto">
+      <div class="p-6 sm:p-7 space-y-5">
+        <div class="flex items-center justify-between">
+          <div>
+            <span class="text-[10px] uppercase tracking-[0.18em] text-berry font-bold">Vanda Gardrób</span>
+            <h3 class="font-serif text-xl sm:text-2xl font-bold text-plum" id="modal-title">Saját ruhadarab hozzáadása</h3>
+          </div>
+          <button onclick="closeAddModal()" class="w-9 h-9 rounded-full bg-blush/80 hover:bg-blush flex items-center justify-center text-plum">✕</button>
+        </div>
+
+        <form id="clothing-form" onsubmit="saveClothingItem(event)" class="space-y-4">
+          <input type="hidden" id="edit-item-id" value="" />
+
+          <div class="space-y-2.5">
+            <div class="relative rounded-2xl border-2 border-dashed border-rosegold/45 bg-white h-60 flex flex-col items-center justify-center overflow-hidden">
+              <img id="photo-preview" src="" alt="Előnézet" class="hidden w-full h-full object-contain bg-cream/60" />
+
+              <div id="photo-placeholder" class="text-center p-4 space-y-2.5">
+                <div class="w-12 h-12 rounded-full bg-blush text-berry flex items-center justify-center mx-auto shadow-soft">
+                  <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><circle cx="12" cy="13" r="3"/></svg>
+                </div>
+                <p class="text-sm font-semibold text-plum">Fotózd le vagy válassz képet a ruháról</p>
+                <p class="text-xs text-mauve">Tipp: terítsd ki világos alapra vagy akaszd vállfára</p>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-2.5">
+              <label class="cursor-pointer flex items-center justify-center gap-2 py-2.5 px-3 rounded-xl bg-gradient-to-r from-rosewood to-berry text-white text-xs font-semibold hover:opacity-95 transition shadow-soft">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><circle cx="12" cy="13" r="3"/></svg>
+                <span>Fotózás kamerával</span>
+                <input type="file" id="camera-input" accept="image/*" capture="environment" onchange="handleImageUpload(event)" class="hidden" />
+              </label>
+
+              <label class="cursor-pointer flex items-center justify-center gap-2 py-2.5 px-3 rounded-xl bg-white border border-rosegold/35 text-plum text-xs font-semibold hover:bg-blush/50 transition shadow-soft">
+                <svg class="w-4 h-4 text-berry" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                <span>Galériából választás</span>
+                <input type="file" id="gallery-input" accept="image/*" onchange="handleImageUpload(event)" class="hidden" />
+              </label>
+            </div>
+
+            <div id="image-tools-bar" class="hidden flex items-center justify-between bg-blush/60 px-3.5 py-2 rounded-xl border border-rosegold/25 text-xs">
+              <span class="font-semibold text-plum">Kép igazítása:</span>
+              <div class="flex items-center gap-2">
+                <button type="button" onclick="rotatePreviewImage()" class="px-2.5 py-1 rounded-lg bg-white border border-rosegold/30 font-semibold text-plum hover:bg-cream">↻ Forgatás 90°</button>
+                <button type="button" onclick="toggleBrightenImage()" id="brighten-btn" class="px-2.5 py-1 rounded-lg bg-white border border-rosegold/30 font-semibold text-plum hover:bg-cream">☀️ Világosítás</button>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-xs font-semibold text-plum mb-1">Ruhadarab neve *</label>
+            <input type="text" id="item-name" required placeholder="pl. Púderrózsaszín selyemblúz, Magasderekú farmer..." class="w-full px-4 py-2.5 rounded-xl bg-white border border-rosegold/30 text-sm focus:outline-none focus:ring-2 focus:ring-rosewood" />
+          </div>
+
+          <div class="grid grid-cols-2 gap-3">
+            <div>
+              <label class="block text-xs font-semibold text-plum mb-1">Kategória</label>
+              <select id="item-category" class="w-full px-3.5 py-2.5 rounded-xl bg-white border border-rosegold/30 text-sm focus:outline-none focus:ring-2 focus:ring-rosewood">
+                <option value="top">Felső / Blúz / Pulóver</option>
+                <option value="bottom">Nadrág / Szoknya</option>
+                <option value="dress">Egyberuha / Overál</option>
+                <option value="outerwear">Kabát / Blézer</option>
+                <option value="shoes">Cipő / Csizma</option>
+                <option value="accessory">Táska / Kiegészítő</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-plum mb-1">Stílus / Alkalom</label>
+              <select id="item-occasion" class="w-full px-3.5 py-2.5 rounded-xl bg-white border border-rosegold/30 text-sm focus:outline-none focus:ring-2 focus:ring-rosewood">
+                <option value="casual">Hétköznapi / Városi</option>
+                <option value="elegant">Elegáns / Alkalmi</option>
+                <option value="sporty">Kényelmes / Sportos</option>
+              </select>
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-xs font-semibold text-plum mb-1.5">Mikor hordható?</label>
+            <div class="grid grid-cols-2 sm:grid-cols-3 gap-2 text-xs">
+              <label class="flex items-center gap-2 p-2.5 rounded-xl border border-rosegold/25 bg-white cursor-pointer hover:bg-blush/40">
+                <input type="checkbox" name="season" value="spring" checked class="rounded text-berry focus:ring-rosewood" /> 🌸 Tavasz
+              </label>
+              <label class="flex items-center gap-2 p-2.5 rounded-xl border border-rosegold/25 bg-white cursor-pointer hover:bg-blush/40">
+                <input type="checkbox" name="season" value="summer" class="rounded text-berry focus:ring-rosewood" /> ☀️ Nyár
+              </label>
+              <label class="flex items-center gap-2 p-2.5 rounded-xl border border-rosegold/25 bg-white cursor-pointer hover:bg-blush/40">
+                <input type="checkbox" name="season" value="autumn" checked class="rounded text-berry focus:ring-rosewood" /> 🍂 Ősz
+              </label>
+              <label class="flex items-center gap-2 p-2.5 rounded-xl border border-rosegold/25 bg-white cursor-pointer hover:bg-blush/40">
+                <input type="checkbox" name="season" value="winter" class="rounded text-berry focus:ring-rosewood" /> ❄️ Tél
+              </label>
+              <label class="flex items-center gap-2 p-2.5 rounded-xl border border-rosegold/25 bg-white cursor-pointer hover:bg-blush/40 col-span-2 sm:col-span-2">
+                <input type="checkbox" name="season" value="rainy" class="rounded text-berry focus:ring-rosewood" /> 🌧️ Esős / Szeles idő
+              </label>
+            </div>
+          </div>
+
+          <div class="pt-2 flex gap-3">
+            <button type="button" onclick="closeAddModal()" class="flex-1 py-3 rounded-full border border-rosegold/35 bg-white text-sm font-semibold text-plum hover:bg-blush/40">Mégse</button>
+            <button type="submit" class="flex-1 py-3 rounded-full bg-gradient-to-r from-rosewood to-berry text-white text-sm font-semibold hover:opacity-95 shadow-luxe">Mentés a gardróbba</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL 2: TÖMEGES FOTÓFELTÖLTÉS -->
+  <div id="bulk-modal" class="fixed inset-0 z-50 hidden bg-plum/50 backdrop-blur-sm flex items-end sm:items-center justify-center p-0 sm:p-4">
+    <div class="bg-cream w-full sm:max-w-2xl rounded-t-[32px] sm:rounded-[32px] shadow-2xl border border-rosegold/30 max-h-[90vh] flex flex-col">
+      <div class="p-6 border-b border-rosegold/20 flex items-center justify-between">
+        <div>
+          <h3 class="font-serif text-xl font-bold text-plum">Több saját ruha hozzáadása</h3>
+          <p class="text-xs text-mauve">Nevezd el és sorold be a kiválasztott fotókat egyszerre.</p>
+        </div>
+        <button onclick="closeBulkModal()" class="w-9 h-9 rounded-full bg-blush/80 hover:bg-blush flex items-center justify-center text-plum">✕</button>
+      </div>
+      <div id="bulk-list" class="p-6 overflow-y-auto space-y-4 flex-1"></div>
+      <div class="p-5 border-t border-rosegold/20 flex justify-end gap-3 bg-white/80 rounded-b-[32px]">
+        <button onclick="closeBulkModal()" class="px-5 py-2.5 rounded-full border border-rosegold/30 text-sm font-semibold text-plum">Mégse</button>
+        <button onclick="saveBulkItems()" class="px-6 py-2.5 rounded-full bg-gradient-to-r from-rosewood to-berry text-white text-sm font-semibold shadow-luxe">Összes mentése</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL 3: SAJÁT SZETT ÖSSZEÁLLÍTÓ -->
+  <div id="manual-modal" class="fixed inset-0 z-50 hidden bg-plum/50 backdrop-blur-sm flex items-end sm:items-center justify-center p-0 sm:p-4">
+    <div class="bg-cream w-full sm:max-w-3xl rounded-t-[32px] sm:rounded-[32px] shadow-2xl border border-rosegold/30 max-h-[90vh] flex flex-col">
+      <div class="p-6 border-b border-rosegold/20 flex items-center justify-between">
+        <div>
+          <h3 class="font-serif text-xl font-bold text-plum">Saját szett összeállítása</h3>
+          <p class="text-xs text-mauve">Válaszd ki Vanda ruháiból, mit mivel kombinálnál.</p>
+        </div>
+        <button onclick="closeManualModal()" class="w-9 h-9 rounded-full bg-blush/80 hover:bg-blush flex items-center justify-center text-plum">✕</button>
+      </div>
+      <div id="manual-picker-body" class="p-6 overflow-y-auto space-y-5 flex-1"></div>
+      <div class="p-5 border-t border-rosegold/20 flex justify-between items-center bg-white/80 rounded-b-[32px]">
+        <span class="text-xs text-mauve" id="manual-selected-count">0 darab kiválasztva</span>
+        <div class="flex gap-2">
+          <button onclick="closeManualModal()" class="px-4 py-2.5 rounded-full border border-rosegold/30 text-sm font-semibold text-plum">Mégse</button>
+          <button onclick="applyManualOutfit()" class="px-6 py-2.5 rounded-full bg-gradient-to-r from-rosewood to-berry text-white text-sm font-semibold shadow-luxe">Megjelenítés</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL 4: TELEPÍTÉS TELEFONRA & BIZTONSÁGI MENTÉS -->
+  <div id="backup-modal" class="fixed inset-0 z-50 hidden bg-plum/50 backdrop-blur-sm flex items-end sm:items-center justify-center p-0 sm:p-4">
+    <div class="bg-cream w-full sm:max-w-lg rounded-t-[32px] sm:rounded-[32px] shadow-2xl border border-rosegold/30 p-6 sm:p-7 space-y-5">
+      <div class="flex items-center justify-between">
+        <div>
+          <span class="text-[10px] uppercase tracking-[0.18em] text-berry font-bold">Mobil App & Mentés</span>
+          <h3 class="font-serif text-xl font-bold text-plum">Telefonos telepítés & Mentés</h3>
+        </div>
+        <button onclick="closeBackupModal()" class="w-9 h-9 rounded-full bg-blush/80 hover:bg-blush flex items-center justify-center text-plum">✕</button>
+      </div>
+
+      <div class="bg-white rounded-2xl p-4 border border-rosegold/25 space-y-2 text-xs text-plum leading-relaxed">
+        <p class="font-semibold text-berry">📲 Hogyan tedd ki a telefon főképernyőjére?</p>
+        <p><strong>iPhone (Safari):</strong> Koppints alul a <em>Megosztás</em> ikonra, majd válaszd a <strong>„Főképernyőhöz adás”</strong> opciót.</p>
+        <p><strong>Android (Chrome):</strong> Koppints a jobb felső három pöttyre, majd a <strong>„Hozzáadás a kezdőképernyőhöz”</strong> menüpontra.</p>
+      </div>
+
+      <div class="bg-white rounded-2xl p-4 border border-rosegold/25 space-y-3">
+        <div>
+          <p class="text-sm font-semibold text-plum">Gardrób mentése fájlba</p>
+          <p class="text-xs text-mauve mt-0.5">Minden fotó és elmentett szett a telefonon tárolódik. Készíts biztonsági mentést, ha új telefonra költöznétek.</p>
+        </div>
+        <div class="grid grid-cols-2 gap-2.5 pt-1">
+          <button onclick="exportWardrobeBackup()" class="py-2.5 px-3 rounded-xl bg-gradient-to-r from-rosewood to-berry text-white text-xs font-semibold shadow-soft hover:opacity-95">
+            ⬇️ Mentés letöltése
+          </button>
+          <button onclick="document.getElementById('backup-restore-input').click()" class="py-2.5 px-3 rounded-xl bg-cream border border-rosegold/35 text-plum text-xs font-semibold hover:bg-blush/50">
+            ⬆️ Visszaállítás fájlból
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Értesítő Toast -->
+  <div id="toast" class="fixed bottom-20 md:bottom-8 left-1/2 -translate-x-1/2 z-50 bg-plum text-white text-xs sm:text-sm font-medium px-5 py-3 rounded-full shadow-luxe border border-rosegold/30 opacity-0 pointer-events-none transition-all duration-300">
+    Mentve!
+  </div>
+
+  <script>
+    // Telepítési tipp sáv megjelenítése mobilon, ha még böngészőben van megnyitva
+    window.addEventListener('load', () => {
+      const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
+      if (!isStandalone && !localStorage.getItem('vanda_install_dismissed')) {
+        document.getElementById('pwa-install-banner').classList.remove('hidden');
+      }
+    });
+
+    function dismissInstallBanner() {
+      localStorage.setItem('vanda_install_dismissed', '1');
+      document.getElementById('pwa-install-banner').classList.add('hidden');
+    }
+
+    // --- INDEXEDDB ADATBÁZIS KEZELŐ (KORLÁTLAN FOTÓTÁRHELY) ---
+    const DB_NAME = 'VandaGardrobDB';
+    const DB_VERSION = 1;
+    let dbInstance = null;
+
+    function openDB() {
+      return new Promise((resolve, reject) => {
+        if (dbInstance) return resolve(dbInstance);
+        const request = indexedDB.open(DB_NAME, DB_VERSION);
+        request.onupgradeneeded = (e) => {
+          const db = e.target.result;
+          if (!db.objectStoreNames.contains('wardrobe')) db.createObjectStore('wardrobe', { keyPath: 'id' });
+          if (!db.objectStoreNames.contains('savedOutfits')) db.createObjectStore('savedOutfits', { keyPath: 'id' });
+        };
+        request.onsuccess = (e) => { dbInstance = e.target.result; resolve(dbInstance); };
+        request.onerror = (e) => reject(e.target.error);
+      });
+    }
+
+    async function dbGetAll(storeName) {
+      const db = await openDB();
+      return new Promise((resolve, reject) => {
+        const tx = db.transaction(storeName, 'readonly');
+        const req = tx.objectStore(storeName).getAll();
+        req.onsuccess = () => resolve(req.result || []);
+        req.onerror = () => reject(req.error);
+      });
+    }
+
+    async function dbPut(storeName, item) {
+      const db = await openDB();
+      return new Promise((resolve, reject) => {
+        const tx = db.transaction(storeName, 'readwrite');
+        tx.objectStore(storeName).put(item);
+        tx.oncomplete = () => resolve();
+        tx.onerror = () => reject(tx.error);
+      });
+    }
+
+    async function dbDelete(storeName, id) {
+      const db = await openDB();
+      return new Promise((resolve, reject) => {
+        const tx = db.transaction(storeName, 'readwrite');
+        tx.objectStore(storeName).delete(id);
+        tx.oncomplete = () => resolve();
+        tx.onerror = () => reject(tx.error);
+      });
+    }
+
+    async function dbReplaceAll(storeName, items) {
+      const db = await openDB();
+      return new Promise((resolve, reject) => {
+        const tx = db.transaction(storeName, 'readwrite');
+        const store = tx.objectStore(storeName);
+        store.clear();
+        items.forEach(item => store.put(item));
+        tx.oncomplete = () => resolve();
+        tx.onerror = () => reject(tx.error);
+      });
+    }
+
+    const CATEGORY_LABELS = {
+      top: 'Felső',
+      bottom: 'Alsó',
+      dress: 'Egyberuha',
+      outerwear: 'Kabát / Blézer',
+      shoes: 'Cipő',
+      accessory: 'Kiegészítő'
+    };
+
+    function createIllustration(bg, fg, label) {
+      const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400" viewBox="0 0 400 400">
+        <defs>
+          <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="${bg}"/>
+            <stop offset="100%" stop-color="#FDF8F5"/>
+          </linearGradient>
+        </defs>
+        <rect width="400" height="400" fill="url(#bgGrad)"/>
+        <circle cx="200" cy="180" r="95" fill="${fg}" opacity="0.14"/>
+        <text x="200" y="192" font-family="Georgia, serif" font-size="38" fill="${fg}" text-anchor="middle">✦</text>
+        <text x="200" y="232" font-family="sans-serif" font-size="13" font-weight="600" fill="${fg}" text-anchor="middle" opacity="0.85">${label}</text>
+        <text x="200" y="346" font-family="sans-serif" font-size="11" fill="${fg}" text-anchor="middle" opacity="0.55">Minta • Koppints saját fotóhoz</text>
+      </svg>`;
+      return 'data:image/svg+xml;utf8,' + encodeURIComponent(svg);
+    }
+
+    const DEFAULT_ITEMS = [
+      { id: 'd1', isDemo: true, name: 'Púderrózsaszín selyemblúz', category: 'top', occasion: 'elegant', seasons: ['spring', 'autumn'], image: createIllustration('#F6E6EA', '#B8526E', 'Selyemblúz') },
+      { id: 'd2', isDemo: true, name: 'Krémfehér kötött pulóver', category: 'top', occasion: 'casual', seasons: ['autumn', 'winter', 'rainy'], image: createIllustration('#F8EFE8', '#9A6B4C', 'Kötött pulóver') },
+      { id: 'd3', isDemo: true, name: 'Fehér pamut póló', category: 'top', occasion: 'casual', seasons: ['spring', 'summer'], image: createIllustration('#F4F1F2', '#6D545E', 'Pamut póló') },
+      { id: 'd4', isDemo: true, name: 'Magasderekú egyenes farmer', category: 'bottom', occasion: 'casual', seasons: ['spring', 'autumn', 'winter', 'rainy'], image: createIllustration('#EAEFF5', '#475D7A', 'Farmer') },
+      { id: 'd5', isDemo: true, name: 'Pliszírozott mályva midiszoknya', category: 'bottom', occasion: 'elegant', seasons: ['spring', 'summer', 'autumn'], image: createIllustration('#F3E3E8', '#9E4761', 'Midiszoknya') },
+      { id: 'd6', isDemo: true, name: 'Virágos nyári lenruha', category: 'dress', occasion: 'casual', seasons: ['summer', 'spring'], image: createIllustration('#FBECE8', '#C46858', 'Nyári ruha') },
+      { id: 'd7', isDemo: true, name: 'Pezsgőszínű ballonkabát', category: 'outerwear', occasion: 'elegant', seasons: ['spring', 'autumn', 'rainy'], image: createIllustration('#F5ECE3', '#8F6544', 'Ballonkabát') },
+      { id: 'd8', isDemo: true, name: 'Gyapjú télikabát', category: 'outerwear', occasion: 'elegant', seasons: ['winter'], image: createIllustration('#EFE8EA', '#4A313A', 'Télikabát') },
+      { id: 'd9', isDemo: true, name: 'Hófehér bőr sneaker', category: 'shoes', occasion: 'casual', seasons: ['spring', 'summer', 'autumn'], image: createIllustration('#F5F2F3', '#6D545E', 'Sneaker') },
+      { id: 'd10', isDemo: true, name: 'Velúr bokacsizma', category: 'shoes', occasion: 'elegant', seasons: ['autumn', 'winter', 'rainy'], image: createIllustration('#F3EAE5', '#7C523B', 'Bokacsizma') },
+      { id: 'd11', isDemo: true, name: 'Rozéarany láncos minitáska', category: 'accessory', occasion: 'elegant', seasons: ['spring', 'summer', 'autumn', 'winter'], image: createIllustration('#F7E8EC', '#B8526E', 'Minitáska') }
+    ];
+
+    const WEATHER_CONFIG = {
+      autumn: { temp: 13, tag: 'Őszi sikk', advice: 'Hűvösebb szellő várható — egy ballonkabát vagy kötött pulóver rétegezve tökéletes lesz.', tip: 'A meleg krém és mályva árnyalatok gyönyörűen harmonizálnak az őszi fényekkel.' },
+      summer: { temp: 27, tag: 'Nyári ragyogás', advice: 'Meleg, napos idő van — válassz légáteresztő, könnyed darabokat.', tip: 'Egy szellős egyberuha és egy elegáns minitáska azonnal kész, nőies megjelenést ad.' },
+      spring: { temp: 18, tag: 'Tavaszi frissesség', advice: 'Kellemes tavaszi idő, de árnyékban még jól jöhet egy könnyű blézer vagy kabát.', tip: 'Párosíts világos felsőt egy midiszoknyával vagy farmerrel a könnyed eleganciáért.' },
+      winter: { temp: 2, tag: 'Téli elegancia', advice: 'Hideg van — rétegezz meleg kötött pulóvert és bélelt kabátot csizmával.', tip: 'A világos krém és púderrózsaszín darabok télen is különösen kifinomult hatást keltenek.' },
+      rainy: { temp: 11, tag: 'Esős napra kész', advice: 'Csapadékos időre zárt cipő, farmer és vízlepergető kabát ajánlott.', tip: 'Ilyenkor kerüld a világos szövetcipőket — egy zárt bokacsizma stílusos és praktikus.' }
+    };
+
+    let wardrobe = [];
+    let savedOutfits = [];
+    let currentWeather = 'autumn';
+    let currentTemp = 13;
+    let currentOccasion = 'all';
+    let currentFilter = 'all';
+    let onlyCustom = false;
+    let currentOutfit = { top: null, bottom: null, outerwear: null, shoes: null, accessory: null };
+    let lockedSlots = { top: false, bottom: false, outerwear: false, shoes: false, accessory: false };
+
+    let uploadedImageData = '';
+    let rawImageData = '';
+    let imageRotation = 0;
+    let imageBrightened = false;
+    let quickPhotoTargetId = null;
+    let bulkDraftItems = [];
+    let manualSelection = {};
+
+    async function initApp() {
+      await openDB();
+      wardrobe = await dbGetAll('wardrobe');
+      if (wardrobe.length === 0) {
+        await dbReplaceAll('wardrobe', DEFAULT_ITEMS);
+        wardrobe = [...DEFAULT_ITEMS];
+      }
+      savedOutfits = await dbGetAll('savedOutfits');
+      updateCounts();
+      generateOutfit();
+      renderWardrobe();
+      renderSaved();
+    }
+
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.remove('opacity-0');
+      clearTimeout(window._toastTimer);
+      window._toastTimer = setTimeout(() => t.classList.add('opacity-0'), 2600);
+    }
+
+    function updateCounts() {
+      document.getElementById('wardrobe-count').textContent = wardrobe.length;
+      document.getElementById('saved-count').textContent = savedOutfits.length;
+      const hasDemos = wardrobe.some(i => i.isDemo);
+      document.getElementById('clear-demos-btn').classList.toggle('hidden', !hasDemos);
+    }
+
+    function switchTab(tab) {
+      ['stylist', 'wardrobe', 'saved'].forEach(t => {
+        document.getElementById('view-' + t).classList.toggle('hidden', t !== tab);
+        const btn = document.getElementById('tab-' + t);
+        if (btn) {
+          btn.className = t === tab
+            ? 'tab-btn px-5 py-2 rounded-full text-sm font-semibold transition-all bg-white text-berry shadow-soft'
+            : 'tab-btn px-5 py-2 rounded-full text-sm font-medium text-mauve hover:text-plum transition-all';
+        }
+        const mBtn = document.getElementById('m-tab-' + t);
+        if (mBtn) {
+          mBtn.className = t === tab
+            ? 'flex flex-col items-center justify-center gap-1 text-berry font-semibold text-xs py-1 px-3'
+            : 'flex flex-col items-center justify-center gap-1 text-mauve font-medium text-xs py-1 px-3';
+        }
+      });
+      if (tab === 'wardrobe') renderWardrobe();
+      if (tab === 'saved') renderSaved();
+    }
+
+    function setWeather(weatherKey) {
+      currentWeather = weatherKey;
+      const cfg = WEATHER_CONFIG[weatherKey];
+      currentTemp = cfg.temp;
+      document.getElementById('temp-slider').value = cfg.temp;
+      document.getElementById('temp-display').textContent = cfg.temp + '°C';
+      document.getElementById('weather-advice').textContent = cfg.advice;
+      document.getElementById('outfit-tag').textContent = cfg.tag;
+      document.getElementById('stylist-note').textContent = cfg.tip;
+
+      document.querySelectorAll('.weather-pill').forEach(pill => {
+        const active = pill.dataset.weather === weatherKey;
+        pill.className = active
+          ? 'weather-pill shrink-0 flex items-center gap-2 px-4 py-2.5 rounded-2xl text-sm font-semibold border transition-all bg-gradient-to-r from-rosewood to-berry text-white border-transparent shadow-luxe'
+          : 'weather-pill shrink-0 flex items-center gap-2 px-4 py-2.5 rounded-2xl text-sm font-medium border border-rosegold/25 bg-cream/70 text-plum hover:bg-blush/60 transition-all';
+      });
+      generateOutfit();
+    }
+
+    function onTempSlide(val) {
+      currentTemp = parseInt(val, 10);
+      document.getElementById('temp-display').textContent = currentTemp + '°C';
+      if (currentTemp <= 6) currentWeather = 'winter';
+      else if (currentTemp <= 15) currentWeather = 'autumn';
+      else if (currentTemp <= 22) currentWeather = 'spring';
+      else currentWeather = 'summer';
+      document.getElementById('outfit-tag').textContent = `${currentTemp}°C-os szett`;
+      generateOutfit();
+    }
+
+    function detectLiveWeather() {
+      const lbl = document.getElementById('live-weather-label');
+      if (!navigator.geolocation) {
+        showToast('A böngésző nem támogatja a helymeghatározást.');
+        return;
+      }
+      lbl.textContent = 'Helymeghatározás...';
+      navigator.geolocation.getCurrentPosition(async (pos) => {
+        try {
+          const { latitude, longitude } = pos.coords;
+          const res = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=temperature_2m,precipitation,weather_code`);
+          const data = await res.json();
+          const temp = Math.round(data.current.temperature_2m);
+          const precip = data.current.precipitation || 0;
+          const code = data.current.weather_code || 0;
+          const isRainy = precip > 0.2 || (code >= 51 && code <= 82);
+
+          currentTemp = temp;
+          document.getElementById('temp-slider').value = Math.max(-5, Math.min(35, temp));
+          document.getElementById('temp-display').textContent = `${temp}°C`;
+          lbl.textContent = `Élő: ${temp}°C ${isRainy ? '🌧️' : '☀️'}`;
+
+          if (isRainy) setWeather('rainy');
+          else if (temp <= 6) setWeather('winter');
+          else if (temp <= 15) setWeather('autumn');
+          else if (temp <= 22) setWeather('spring');
+          else setWeather('summer');
+
+          document.getElementById('weather-advice').textContent = `A jelenlegi kinti hőmérséklet (${temp}°C) alapján összeállítva.`;
+          showToast(`Élő időjárás betöltve: ${temp}°C`);
+        } catch (err) {
+          lbl.textContent = 'Élő időjárás lekérése';
+          showToast('Nem sikerült elérni az időjárás-szolgáltatást.');
+        }
+      }, () => {
+        lbl.textContent = 'Élő időjárás lekérése';
+        showToast('Engedélyezd a helymeghatározást a telefonon.');
+      });
+    }
+
+    function setOccasion(occ) {
+      currentOccasion = occ;
+      document.querySelectorAll('.occ-btn').forEach(btn => {
+        const active = btn.dataset.occ === occ;
+        btn.className = active
+          ? 'occ-btn px-3.5 py-2 rounded-full text-xs font-semibold bg-plum text-white transition'
+          : 'occ-btn px-3.5 py-2 rounded-full text-xs font-medium bg-blush/70 text-plum hover:bg-blush transition';
+      });
+      generateOutfit();
+    }
+
+    function toggleOnlyCustom(val) {
+      onlyCustom = val;
+      generateOutfit();
+    }
+
+    function pickRandom(arr, excludeId = null) {
+      if (!arr.length) return null;
+      const filtered = excludeId && arr.length > 1 ? arr.filter(i => i.id !== excludeId) : arr;
+      return filtered[Math.floor(Math.random() * filtered.length)];
+    }
+
+    function getMatchingItems(category) {
+      let pool = wardrobe.filter(item => item.category === category);
+      if (onlyCustom) {
+        const customPool = pool.filter(item => !item.isDemo);
+        if (customPool.length) pool = customPool;
+      }
+      if (!pool.length) return [];
+
+      let seasonMatch = pool.filter(item => item.seasons.includes(currentWeather));
+      if (!seasonMatch.length) seasonMatch = pool;
+
+      if (currentOccasion !== 'all') {
+        const occMatch = seasonMatch.filter(item => item.occasion === currentOccasion);
+        if (occMatch.length) return occMatch;
+      }
+      return seasonMatch;
+    }
+
+    function generateOutfit() {
+      const needsOuterwear = currentTemp <= 19 || currentWeather === 'rainy' || currentWeather === 'winter';
+      const dresses = getMatchingItems('dress');
+      const tops = getMatchingItems('top');
+      const bottoms = getMatchingItems('bottom');
+
+      const useDress = !lockedSlots.top && !lockedSlots.bottom && dresses.length > 0 && (Math.random() < 0.35 || (!tops.length || !bottoms.length));
+
+      if (useDress) {
+        currentOutfit.top = pickRandom(dresses, currentOutfit.top?.id);
+        currentOutfit.bottom = null;
+      } else {
+        if (!lockedSlots.top) {
+          if (currentOutfit.top?.category === 'dress') {
+            currentOutfit.top = pickRandom(tops);
+          } else {
+            currentOutfit.top = pickRandom(tops, currentOutfit.top?.id) || pickRandom(dresses);
+          }
+        }
+        if (!lockedSlots.bottom) {
+          currentOutfit.bottom = currentOutfit.top?.category === 'dress' ? null : pickRandom(bottoms, currentOutfit.bottom?.id);
+        }
+      }
+
+      if (!lockedSlots.outerwear) {
+        currentOutfit.outerwear = needsOuterwear ? pickRandom(getMatchingItems('outerwear'), currentOutfit.outerwear?.id) : null;
+      }
+      if (!lockedSlots.shoes) {
+        currentOutfit.shoes = pickRandom(getMatchingItems('shoes'), currentOutfit.shoes?.id);
+      }
+      if (!lockedSlots.accessory) {
+        currentOutfit.accessory = pickRandom(getMatchingItems('accessory'), currentOutfit.accessory?.id);
+      }
+
+      renderOutfit();
+    }
+
+    function rerollSingleSlot(slot) {
+      if (lockedSlots[slot]) return;
+      if (slot === 'top') {
+        const pool = [...getMatchingItems('top'), ...getMatchingItems('dress')];
+        currentOutfit.top = pickRandom(pool, currentOutfit.top?.id);
+        if (currentOutfit.top?.category === 'dress') currentOutfit.bottom = null;
+        else if (!currentOutfit.bottom) currentOutfit.bottom = pickRandom(getMatchingItems('bottom'));
+      } else {
+        currentOutfit[slot] = pickRandom(getMatchingItems(slot), currentOutfit[slot]?.id);
+      }
+      renderOutfit();
+    }
+
+    function toggleLock(slot) {
+      lockedSlots[slot] = !lockedSlots[slot];
+      renderOutfit();
+    }
+
+    function renderOutfit() {
+      const grid = document.getElementById('outfit-grid');
+      const slots = [
+        { key: 'top', label: currentOutfit.top?.category === 'dress' ? 'Egyberuha' : 'Felső', item: currentOutfit.top },
+        ...(currentOutfit.top?.category === 'dress' ? [] : [{ key: 'bottom', label: 'Alsó', item: currentOutfit.bottom }]),
+        ...(currentOutfit.outerwear ? [{ key: 'outerwear', label: 'Kabát / Réteg', item: currentOutfit.outerwear }] : []),
+        { key: 'shoes', label: 'Cipő', item: currentOutfit.shoes },
+        ...(currentOutfit.accessory ? [{ key: 'accessory', label: 'Kiegészítő', item: currentOutfit.accessory }] : [])
+      ];
+
+      grid.innerHTML = slots.map(slot => {
+        const item = slot.item;
+        const locked = lockedSlots[slot.key];
+        if (!item) {
+          return `
+            <div class="bg-white/70 rounded-3xl border-2 border-dashed border-rosegold/30 p-6 flex flex-col items-center justify-center text-center min-h-[270px]">
+              <span class="text-xs font-semibold uppercase tracking-wider text-mauve mb-2">${slot.label}</span>
+              <p class="text-sm text-mauve mb-4">Nincs még saját darab ebben a kategóriában</p>
+              <button onclick="openAddModal('${slot.key}')" class="text-xs font-semibold bg-blush text-berry px-4 py-2 rounded-full hover:bg-rosewood hover:text-white transition">+ Saját fotó feltöltése</button>
+            </div>
+          `;
+        }
+        return `
+          <div class="bg-white rounded-3xl overflow-hidden border ${locked ? 'border-berry ring-2 ring-rosewood/30' : 'border-rosegold/25'} shadow-soft card-hover flex flex-col">
+            <div class="relative aspect-square bg-cream/60 overflow-hidden group">
+              <img src="${item.image}" alt="${item.name}" class="w-full h-full object-cover" />
+              <span class="absolute top-3 left-3 bg-white/95 backdrop-blur px-3 py-1 rounded-full text-[11px] font-semibold text-plum shadow-soft border border-rosegold/20">
+                ${slot.label}
+              </span>
+              <button onclick="toggleLock('${slot.key}')" title="${locked ? 'Feloldás' : 'Darab rögzítése'}" class="absolute top-3 right-3 w-8 h-8 rounded-full ${locked ? 'bg-berry text-white' : 'bg-white/90 text-plum hover:bg-white'} shadow-soft flex items-center justify-center transition">
+                ${locked ? '🔒' : '🔓'}
+              </button>
+              <button onclick="triggerQuickPhotoReplace('${item.id}')" title="Saját fotó cseréje" class="absolute bottom-3 right-3 px-2.5 py-1 rounded-full bg-plum/85 text-white text-[11px] font-medium backdrop-blur opacity-95 hover:bg-berry transition flex items-center gap-1">
+                <span>📷</span> Fotó csere
+              </button>
+            </div>
+            <div class="p-4 flex-1 flex flex-col justify-between gap-3">
+              <div>
+                <h4 class="font-semibold text-sm text-plum line-clamp-1">${item.name}</h4>
+                <p class="text-xs text-mauve mt-0.5 capitalize">${item.isDemo ? 'Minta • Cseréld saját fotóra' : 'Saját gardrób'}</p>
+              </div>
+              <button onclick="rerollSingleSlot('${slot.key}')" ${locked ? 'disabled' : ''} class="w-full py-2 rounded-xl text-xs font-semibold border ${locked ? 'border-rosegold/15 text-mauve/50 cursor-not-allowed' : 'border-rosegold/30 text-plum hover:bg-blush/60'} transition flex items-center justify-center gap-1.5">
+                <span>↻</span> Másik darab
+              </button>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function processImageFile(file, rotation = 0, brighten = false) {
+      return new Promise((resolve) => {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          const img = new Image();
+          img.onload = () => {
+            const canvas = document.createElement('canvas');
+            const maxSize = 640;
+            let w = img.width;
+            let h = img.height;
+            if (w > h && w > maxSize) {
+              h = Math.round((h * maxSize) / w);
+              w = maxSize;
+            } else if (h > maxSize) {
+              w = Math.round((w * maxSize) / h);
+              h = maxSize;
+            }
+            const isVertical = rotation === 90 || rotation === 270;
+            canvas.width = isVertical ? h : w;
+            canvas.height = isVertical ? w : h;
+
+            const ctx = canvas.getContext('2d');
+            if (brighten) ctx.filter = 'brightness(1.12) contrast(1.05)';
+            ctx.translate(canvas.width / 2, canvas.height / 2);
+            ctx.rotate((rotation * Math.PI) / 180);
+            ctx.drawImage(img, -w / 2, -h / 2, w, h);
+
+            resolve(canvas.toDataURL('image/jpeg', 0.8));
+          };
+          img.src = e.target.result;
+        };
+        reader.readAsDataURL(file);
+      });
+    }
+
+    async function handleImageUpload(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+      rawImageData = file;
+      imageRotation = 0;
+      imageBrightened = false;
+      document.getElementById('brighten-btn').classList.remove('bg-blush', 'text-berry');
+      await refreshPreviewImage();
+    }
+
+    async function refreshPreviewImage() {
+      if (!rawImageData) return;
+      uploadedImageData = await processImageFile(rawImageData, imageRotation, imageBrightened);
+      const preview = document.getElementById('photo-preview');
+      preview.src = uploadedImageData;
+      preview.classList.remove('hidden');
+      document.getElementById('photo-placeholder').classList.add('hidden');
+      document.getElementById('image-tools-bar').classList.remove('hidden');
+    }
+
+    async function rotatePreviewImage() {
+      imageRotation = (imageRotation + 90) % 360;
+      await refreshPreviewImage();
+    }
+
+    async function toggleBrightenImage() {
+      imageBrightened = !imageBrightened;
+      const btn = document.getElementById('brighten-btn');
+      btn.classList.toggle('bg-blush', imageBrightened);
+      btn.classList.toggle('text-berry', imageBrightened);
+      await refreshPreviewImage();
+    }
+
+    function triggerQuickPhotoReplace(itemId) {
+      quickPhotoTargetId = itemId;
+      const inp = document.getElementById('quick-photo-input');
+      inp.value = '';
+      inp.click();
+    }
+
+    document.getElementById('quick-photo-input').addEventListener('change', async (e) => {
+      const file = e.target.files[0];
+      if (!file || !quickPhotoTargetId) return;
+      const dataUrl = await processImageFile(file, 0, false);
+      const idx = wardrobe.findIndex(i => i.id === quickPhotoTargetId);
+      if (idx !== -1) {
+        wardrobe[idx].image = dataUrl;
+        wardrobe[idx].isDemo = false;
+        await dbPut('wardrobe', wardrobe[idx]);
+        Object.keys(currentOutfit).forEach(k => {
+          if (currentOutfit[k]?.id === quickPhotoTargetId) currentOutfit[k] = wardrobe[idx];
+        });
+        updateCounts();
+        renderOutfit();
+        renderWardrobe();
+        showToast('Saját ruhafotó frissítve!');
+      }
+      quickPhotoTargetId = null;
+    });
+
+    function triggerBulkUpload() {
+      const inp = document.getElementById('bulk-photo-input');
+      inp.value = '';
+      inp.click();
+    }
+
+    document.getElementById('bulk-photo-input').addEventListener('change', async (e) => {
+      const files = Array.from(e.target.files || []);
+      if (!files.length) return;
+      showToast('Fotók feldolgozása...');
+      bulkDraftItems = [];
+      for (let i = 0; i < files.length; i++) {
+        const imgData = await processImageFile(files[i], 0, false);
+        const cleanName = files[i].name.replace(/\.[^/.]+$/, '').replace(/[-_]/g, ' ') || `Saját ruha #${i + 1}`;
+        bulkDraftItems.push({
+          id: 'c_' + Date.now() + '_' + i,
+          isDemo: false,
+          name: cleanName.charAt(0).toUpperCase() + cleanName.slice(1),
+          category: 'top',
+          occasion: 'casual',
+          seasons: ['spring', 'autumn'],
+          image: imgData
+        });
+      }
+      renderBulkModal();
+      document.getElementById('bulk-modal').classList.remove('hidden');
+    });
+
+    function renderBulkModal() {
+      const list = document.getElementById('bulk-list');
+      list.innerHTML = bulkDraftItems.map((item, idx) => `
+        <div class="flex items-center gap-4 bg-white p-3.5 rounded-2xl border border-rosegold/25 shadow-soft">
+          <img src="${item.image}" class="w-20 h-20 rounded-xl object-cover shrink-0 border border-rosegold/20" />
+          <div class="flex-1 grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+            <input type="text" value="${item.name}" oninput="bulkDraftItems[${idx}].name = this.value" class="px-3 py-2 rounded-xl bg-cream border border-rosegold/25 text-xs font-semibold text-plum" placeholder="Ruha neve" />
+            <select onchange="bulkDraftItems[${idx}].category = this.value" class="px-3 py-2 rounded-xl bg-cream border border-rosegold/25 text-xs text-plum">
+              <option value="top" selected>Felső / Blúz / Pulóver</option>
+              <option value="bottom">Nadrág / Szoknya</option>
+              <option value="dress">Egyberuha</option>
+              <option value="outerwear">Kabát / Blézer</option>
+              <option value="shoes">Cipő</option>
+              <option value="accessory">Táska / Kiegészítő</option>
+            </select>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function closeBulkModal() {
+      document.getElementById('bulk-modal').classList.add('hidden');
+    }
+
+    async function saveBulkItems() {
+      for (const item of bulkDraftItems) {
+        wardrobe.unshift(item);
+        await dbPut('wardrobe', item);
+      }
+      updateCounts();
+      renderWardrobe();
+      generateOutfit();
+      closeBulkModal();
+      showToast(`${bulkDraftItems.length} saját ruhadarab elmentve!`);
+    }
+
+    function openAddModal(preselectedCategory = 'top', editId = null) {
+      document.getElementById('clothing-form').reset();
+      document.getElementById('edit-item-id').value = editId || '';
+      rawImageData = null;
+      imageRotation = 0;
+      imageBrightened = false;
+
+      const preview = document.getElementById('photo-preview');
+      const placeholder = document.getElementById('photo-placeholder');
+      document.getElementById('image-tools-bar').classList.add('hidden');
+
+      if (editId) {
+        const item = wardrobe.find(i => i.id === editId);
+        if (item) {
+          document.getElementById('modal-title').textContent = 'Ruhadarab szerkesztése';
+          document.getElementById('item-name').value = item.name;
+          document.getElementById('item-category').value = item.category;
+          document.getElementById('item-occasion').value = item.occasion;
+          uploadedImageData = item.image;
+          preview.src = item.image;
+          preview.classList.remove('hidden');
+          placeholder.classList.add('hidden');
+          document.querySelectorAll('input[name="season"]').forEach(cb => {
+            cb.checked = item.seasons.includes(cb.value);
+          });
+        }
+      } else {
+        document.getElementById('modal-title').textContent = 'Saját ruhadarab hozzáadása';
+        uploadedImageData = '';
+        preview.classList.add('hidden');
+        placeholder.classList.remove('hidden');
+        if (preselectedCategory) document.getElementById('item-category').value = preselectedCategory;
+      }
+
+      document.getElementById('add-modal').classList.remove('hidden');
+    }
+
+    function closeAddModal() {
+      document.getElementById('add-modal').classList.add('hidden');
+    }
+
+    async function saveClothingItem(e) {
+      e.preventDefault();
+      const editId = document.getElementById('edit-item-id').value;
+      const name = document.getElementById('item-name').value.trim();
+      const category = document.getElementById('item-category').value;
+      const occasion = document.getElementById('item-occasion').value;
+      const seasons = Array.from(document.querySelectorAll('input[name="season"]:checked')).map(el => el.value);
+      if (!seasons.length) seasons.push('spring', 'autumn');
+
+      const finalImage = uploadedImageData || createIllustration('#F6E6EA', '#B8526E', name);
+
+      if (editId) {
+        const idx = wardrobe.findIndex(i => i.id === editId);
+        if (idx !== -1) {
+          wardrobe[idx] = {
+            ...wardrobe[idx],
+            name,
+            category,
+            occasion,
+            seasons,
+            image: finalImage,
+            isDemo: uploadedImageData ? false : wardrobe[idx].isDemo
+          };
+          await dbPut('wardrobe', wardrobe[idx]);
+          showToast('Ruhadarab frissítve!');
+        }
+      } else {
+        const newItem = {
+          id: 'item_' + Date.now(),
+          isDemo: !uploadedImageData,
+          name,
+          category,
+          occasion,
+          seasons,
+          image: finalImage
+        };
+        wardrobe.unshift(newItem);
+        await dbPut('wardrobe', newItem);
+        showToast('Saját ruhadarab hozzáadva!');
+      }
+
+      updateCounts();
+      renderWardrobe();
+      generateOutfit();
+      closeAddModal();
+    }
+
+    function filterWardrobe(cat) {
+      currentFilter = cat;
+      document.querySelectorAll('.cat-btn').forEach(btn => {
+        const active = btn.dataset.cat === cat;
+        btn.className = active
+          ? 'cat-btn px-4 py-2 rounded-full text-xs font-semibold bg-plum text-white transition'
+          : 'cat-btn px-4 py-2 rounded-full text-xs font-medium bg-white border border-rosegold/25 text-plum hover:bg-blush/50 transition';
+      });
+      renderWardrobe();
+    }
+
+    function renderWardrobe() {
+      const grid = document.getElementById('wardrobe-grid');
+      const items = currentFilter === 'all' ? wardrobe : wardrobe.filter(i => i.category === currentFilter);
+
+      if (!items.length) {
+        grid.innerHTML = `<div class="col-span-full text-center py-14 text-mauve text-sm bg-white/60 rounded-3xl border border-rosegold/20">Ebben a kategóriában még nincs darab. Kattints az <strong>„Új ruha”</strong> gombra!</div>`;
+        return;
+      }
+
+      grid.innerHTML = items.map(item => `
+        <div class="bg-white rounded-3xl overflow-hidden border border-rosegold/25 shadow-soft card-hover group flex flex-col">
+          <div class="relative aspect-square bg-cream/60 overflow-hidden">
+            <img src="${item.image}" alt="${item.name}" class="w-full h-full object-cover" />
+            <span class="absolute top-2.5 left-2.5 bg-white/95 backdrop-blur px-2.5 py-1 rounded-full text-[10px] font-semibold text-plum border border-rosegold/20">
+              ${CATEGORY_LABELS[item.category] || item.category}
+            </span>
+            <div class="absolute top-2.5 right-2.5 flex gap-1.5">
+              <button onclick="openAddModal(null, '${item.id}')" title="Szerkesztés" class="w-7 h-7 rounded-full bg-white/95 text-plum hover:bg-blush shadow-soft flex items-center justify-center text-xs">✎</button>
+              <button onclick="deleteWardrobeItem('${item.id}')" title="Törlés" class="w-7 h-7 rounded-full bg-white/95 text-berry hover:bg-berry hover:text-white shadow-soft flex items-center justify-center text-xs">✕</button>
+            </div>
+            <button onclick="triggerQuickPhotoReplace('${item.id}')" class="absolute bottom-2.5 inset-x-2.5 py-1.5 rounded-xl bg-plum/85 hover:bg-berry text-white text-[11px] font-semibold backdrop-blur transition flex items-center justify-center gap-1.5">
+              <span>📷</span> ${item.isDemo ? 'Saját fotó feltöltése' : 'Fotó cseréje'}
+            </button>
+          </div>
+          <div class="p-3.5">
+            <h4 class="font-semibold text-sm text-plum line-clamp-1">${item.name}</h4>
+            <div class="flex flex-wrap gap-1 mt-1.5">
+              ${item.seasons.map(s => `<span class="text-[10px] bg-blush/70 text-berry font-medium px-2 py-0.5 rounded-full">${seasonBadge(s)}</span>`).join('')}
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function seasonBadge(s) {
+      return { spring: 'Tavasz', summer: 'Nyár', autumn: 'Ősz', winter: 'Tél', rainy: 'Esős' }[s] || s;
+    }
+
+    async function deleteWardrobeItem(id) {
+      wardrobe = wardrobe.filter(i => i.id !== id);
+      await dbDelete('wardrobe', id);
+      updateCounts();
+      renderWardrobe();
+      generateOutfit();
+      showToast('Ruhadarab törölve.');
+    }
+
+    async function clearDemoItems() {
+      const demos = wardrobe.filter(i => i.isDemo);
+      wardrobe = wardrobe.filter(i => !i.isDemo);
+      for (const d of demos) await dbDelete('wardrobe', d.id);
+      updateCounts();
+      renderWardrobe();
+      generateOutfit();
+      showToast('Mintaruhák eltávolítva.');
+    }
+
+    function openManualBuilder() {
+      manualSelection = {
+        top: currentOutfit.top?.id || null,
+        bottom: currentOutfit.bottom?.id || null,
+        outerwear: currentOutfit.outerwear?.id || null,
+        shoes: currentOutfit.shoes?.id || null,
+        accessory: currentOutfit.accessory?.id || null
+      };
+      renderManualModal();
+      document.getElementById('manual-modal').classList.remove('hidden');
+    }
+
+    function closeManualModal() {
+      document.getElementById('manual-modal').classList.add('hidden');
+    }
+
+    function toggleManualPick(slot, itemId) {
+      manualSelection[slot] = manualSelection[slot] === itemId ? null : itemId;
+      renderManualModal();
+    }
+
+    function renderManualModal() {
+      const body = document.getElementById('manual-picker-body');
+      const sections = [
+        { slot: 'top', title: 'Felső vagy Egyberuha', cats: ['top', 'dress'] },
+        { slot: 'bottom', title: 'Nadrág vagy Szoknya', cats: ['bottom'] },
+        { slot: 'outerwear', title: 'Kabát / Blézer', cats: ['outerwear'] },
+        { slot: 'shoes', title: 'Cipő', cats: ['shoes'] },
+        { slot: 'accessory', title: 'Táska / Kiegészítő', cats: ['accessory'] }
+      ];
+
+      const count = Object.values(manualSelection).filter(Boolean).length;
+      document.getElementById('manual-selected-count').textContent = `${count} darab kiválasztva`;
+
+      body.innerHTML = sections.map(sec => {
+        const items = wardrobe.filter(i => sec.cats.includes(i.category));
+        if (!items.length) return '';
+        return `
+          <div class="space-y-2">
+            <h4 class="text-xs font-bold uppercase tracking-wider text-berry">${sec.title}</h4>
+            <div class="grid grid-cols-3 sm:grid-cols-5 gap-2.5">
+              ${items.map(item => {
+                const selected = manualSelection[sec.slot] === item.id;
+                return `
+                  <button type="button" onclick="toggleManualPick('${sec.slot}', '${item.id}')" class="text-left rounded-2xl overflow-hidden border-2 transition ${selected ? 'border-berry ring-2 ring-rosewood/30 bg-blush/40' : 'border-rosegold/20 bg-white hover:border-rosegold/50'}">
+                    <img src="${item.image}" class="w-full aspect-square object-cover" />
+                    <p class="p-2 text-[11px] font-semibold text-plum line-clamp-1">${item.name}</p>
+                  </button>
+                `;
+              }).join('')}
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function applyManualOutfit() {
+      Object.keys(manualSelection).forEach(slot => {
+        const id = manualSelection[slot];
+        currentOutfit[slot] = id ? wardrobe.find(i => i.id === id) || null : null;
+      });
+      if (currentOutfit.top?.category === 'dress') currentOutfit.bottom = null;
+      document.getElementById('outfit-tag').textContent = 'Vanda válogatása';
+      renderOutfit();
+      closeManualModal();
+      showToast('Saját összeállítás betöltve!');
+    }
+
+    async function saveCurrentOutfit() {
+      const items = [currentOutfit.top, currentOutfit.bottom, currentOutfit.outerwear, currentOutfit.shoes, currentOutfit.accessory].filter(Boolean);
+      if (!items.length) return;
+
+      const newSaved = {
+        id: 'outfit_' + Date.now(),
+        weather: document.getElementById('outfit-tag').textContent,
+        date: new Date().toLocaleDateString('hu-HU', { month: 'short', day: 'numeric' }),
+        items
+      };
+      savedOutfits.unshift(newSaved);
+      await dbPut('savedOutfits', newSaved);
+      updateCounts();
+      showToast('Szett elmentve Vanda Lookbookjába!');
+    }
+
+    function renderSaved() {
+      const grid = document.getElementById('saved-grid');
+      if (!savedOutfits.length) {
+        grid.innerHTML = `<div class="col-span-full text-center py-14 text-mauve text-sm bg-white/60 rounded-3xl border border-rosegold/20">Még nincs elmentett szett. Kattints a <strong>„Mentés”</strong> gombra az ajánlóban!</div>`;
+        return;
+      }
+
+      grid.innerHTML = savedOutfits.map(outfit => `
+        <div class="bg-white rounded-3xl p-5 border border-rosegold/25 shadow-soft space-y-4">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <span class="text-xs font-semibold bg-blush text-berry px-3 py-1 rounded-full">${outfit.weather}</span>
+              <span class="text-xs text-mauve">${outfit.date}</span>
+            </div>
+            <button onclick="deleteSavedOutfit('${outfit.id}')" class="text-xs text-mauve hover:text-berry font-medium">Törlés</button>
+          </div>
+          <div class="grid grid-cols-4 gap-2.5">
+            ${outfit.items.map(i => `
+              <div class="space-y-1">
+                <div class="aspect-square rounded-2xl overflow-hidden bg-cream border border-rosegold/20">
+                  <img src="${i.image}" alt="${i.name}" class="w-full h-full object-cover" />
+                </div>
+                <p class="text-[11px] font-medium text-plum line-clamp-1">${i.name}</p>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      `).join('');
+    }
+
+    async function deleteSavedOutfit(id) {
+      savedOutfits = savedOutfits.filter(o => o.id !== id);
+      await dbDelete('savedOutfits', id);
+      updateCounts();
+      renderSaved();
+      showToast('Mentett szett törölve.');
+    }
+
+    function openBackupModal() { document.getElementById('backup-modal').classList.remove('hidden'); }
+    function closeBackupModal() { document.getElementById('backup-modal').classList.add('hidden'); }
+
+    function exportWardrobeBackup() {
+      const payload = {
+        app: 'Vanda Gardrób',
+        exportedAt: new Date().toISOString(),
+        wardrobe,
+        savedOutfits
+      };
+      const blob = new Blob([JSON.stringify(payload)], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `vanda-gardrob-mentes-${new Date().toISOString().slice(0, 10)}.json`;
+      a.click();
+      URL.revokeObjectURL(url);
+      showToast('Biztonsági mentés letöltve!');
+    }
+
+    document.getElementById('backup-restore-input').addEventListener('change', async (e) => {
+      const file = e.target.files[0];
+      if (!file) return;
+      try {
+        const text = await file.text();
+        const data = JSON.parse(text);
+        if (Array.isArray(data.wardrobe)) {
+          wardrobe = data.wardrobe;
+          await dbReplaceAll('wardrobe', wardrobe);
+        }
+        if (Array.isArray(data.savedOutfits)) {
+          savedOutfits = data.savedOutfits;
+          await dbReplaceAll('savedOutfits', savedOutfits);
+        }
+        updateCounts();
+        renderWardrobe();
+        renderSaved();
+        generateOutfit();
+        closeBackupModal();
+        showToast('Gardrób sikeresen visszaállítva!');
+      } catch (err) {
+        showToast('Hibás biztonsági mentés fájl.');
+      }
+    });
+
+    initApp();
+  </script>
+</body>
+</html>
